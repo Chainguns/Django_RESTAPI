@@ -27,4 +27,5 @@ class UserAdmin(BaseUserAdmin):
     )
 
 
+#comment
 admin.site.register(models.User, UserAdmin)
