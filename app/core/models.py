@@ -49,3 +49,20 @@ class Ingredient(md.Model):
     )
     def __str__(self):
         return self.name
+
+
+class Recipe(md.Model):
+    """Recipe to be used"""
+    title = md.CharField(max_length=255)
+    user = md.ForeignKey(
+    settings.AUTH_USER_MODEL,
+    on_delete=md.CASCADE
+    )
+    price = md.DecimalField(max_digits=5, decimal_places=2)
+    time_minutes = md.IntegerField()
+    link = md.CharField(max_length=255, blank=True)
+    ingredients = md.ManyToManyField('Ingredient')
+    tags = md.ManyToManyField('Tag')
+
+    def __str__(self):
+        return self.title
